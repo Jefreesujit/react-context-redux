@@ -1,27 +1,26 @@
 import * as React from 'react';
-import Prevent from '../Components/Prevent';
 
-const connect = Consumer => mapStateToProps => WrappedComponent => {
-  const renderComponent = props => <WrappedComponent {...props} />
+const connect = (Consumer, dispatcher) => mapStateToProps => WrappedComponent => {
+  const dispatchProp = actionCallback => {
+    actionCallback(dispatcher);
+  }
+
   const ConnectedComponent = props => (
     <Consumer>
       {state => {
-        const filteredState = mapStateToProps(state || {})
+        const mappedProps = mapStateToProps(state || {})
         return (
-          <Prevent  dispatch={}
-                    renderComponent={renderComponent}
-                    {...props}
-                    {...filteredState} />
+          <WrappedComponent dispatch={dispatchProp}
+                            {...props}
+                            {...mappedProps} />
         )
       }}
     </Consumer>
   )
 
-  ConnectedComponent.displayName = `Connect(${WrappedComponent.displayName ||
-    WrappedComponent.name ||
-    'Unknown'})`
+  ConnectedComponent.displayName = `Connect(${WrappedComponent.displayName || WrappedComponent.name})`
 
-  return ConnectedComponent
+  return ConnectedComponent;
 }
 
-export default connect
+export default connect;

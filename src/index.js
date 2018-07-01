@@ -1,16 +1,18 @@
-// @flow
-/* eslint-disable no-undef */
-
-import { createContext } from 'react'
-
-import createProvider from './Components/Provider'
+import { createContext } from 'react';
+import createProvider from './Provider';
 import createConnect from './connect';
 
 const createStore = (initialState) => {
   const context = createContext();
 
-  const Provider = createProvider(context.Provider, initialState)
-  const connect = createConnect(context.Consumer)
+  let dispatcher = (data) => {
+    console.log('dispatcher', data);
+  }
+
+  const Provider = createProvider(context.Provider, initialState);
+  const connect = createConnect(context.Consumer, dispatcher);
+
+  console.log(Provider);
 
   return {
     Provider,
@@ -18,4 +20,4 @@ const createStore = (initialState) => {
   }
 }
 
-export default createStore
+export default createStore;
