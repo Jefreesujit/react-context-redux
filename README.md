@@ -17,7 +17,7 @@ You can use it the same way as redux provider and connect. Dispatch will be avai
 import createStore from 'react-context-state';
 let initialState = { count: 0 };
 
-export const { Provider, connect } = createStore(initialState)
+export const { Provider, connect } = createStore(initialState);
 ```
 
 **App.js:**
@@ -29,16 +29,16 @@ const App = (props) => (
   <Provider>
     <Counter />
   </Provider>
-)
+);
 ```
 
-**myComponent.js:**
+**counter.js:**
 ```js
 import { connect } from './store';
 
 const increaseCount = value => dispatch => {
     dispatch({  key: 'example.value',  payload: ++value });
-}}
+}};
 
 const Counter = (props) => {
     const counter = () => props.dispatch(increaseCount());
@@ -48,9 +48,9 @@ const Counter = (props) => {
         <button onClick={counter}>Count</button>
       </div>
    );
-}
+};
 
-const select = (state) => ({ value: state.example.value });
+const select = state => ({ value: state.example.value });
 
 export default connect(select)(Counter);
 ```
