@@ -1,10 +1,10 @@
 import React from 'react';
 import { Provider } from '../store';
-import Component from './component';
+import Counter from './counter';
 
 const App = () => (
   <Provider>
-    <Component />
+    <Counter text="Count" />
   </Provider>
 )
 

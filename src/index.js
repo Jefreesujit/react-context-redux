@@ -1,33 +1,22 @@
 import { createContext } from 'react';
-import setKeypath from 'keypather/set';
 import createProvider from './Provider';
 import createConnect from './connect';
 
-const createStore = (initialState) => {
-  let setState, getState;
+const createStore = initialState => {
+  let updateState;
 
-  const context = createContext();
+  const { Provider, Consumer } = createContext();
+  const dispatcher = data => updateState(data);
 
   const initializeProvider = self => {
-    console.log('provider set');
-    setState = (state, callback) => self.setState(state, callback);
-    getState = () => self.state;
+    updateState = self.updateState;
   }
 
-  const dispatcher = (data) => {
-    console.log(data);
-    let newState = Object.assign({}, getState());
-    setKeypath(newState, data.key, data.payload, {force: true});
-    setState(newState);
-  }
-
-  console.log(setState);
-
-  const Provider = createProvider(initializeProvider, context.Provider, initialState);
-  const connect = createConnect(context.Consumer, dispatcher);
+  const provider = createProvider(initializeProvider, Provider, initialState);
+  const connect = createConnect(Consumer, dispatcher);
 
   return {
-    Provider,
+    Provider: provider,
     connect
   };
 }

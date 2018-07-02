@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from '../store';
 
-class MyComponent extends Component {
+class Counter extends Component {
     constructor () {
         super();
     }
@@ -24,8 +24,9 @@ class MyComponent extends Component {
     render() {
         return (
             <div className="div">
-                <div className="text"> {this.props.value}</div>
-                <button className="button" onClick={this.clickHandler} >Click Here</button>
+                <h4>Counter</h4>
+                <div className="text"> {this.props.text} : {this.props.value}</div>
+                <button className="button" onClick={this.clickHandler} >Count</button>
             </div>
         )
     }
@@ -38,4 +39,4 @@ function select (state) {
     };
 }
 
-export default connect(select)(MyComponent);
+export default connect(select)(Counter);

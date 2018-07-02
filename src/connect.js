@@ -8,7 +8,7 @@ const connect = (Consumer, dispatcher) => mapStateToProps => WrappedComponent =>
   const ConnectedComponent = props => (
     <Consumer>
       {state => {
-        const mappedProps = mapStateToProps(state || {})
+        const mappedProps = mapStateToProps(state || {});
         return (
           <WrappedComponent dispatch={dispatchProp}
                             {...props}
