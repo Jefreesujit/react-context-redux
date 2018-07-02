@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from '../store';
+import { connect } from './store';
 
 class Counter extends Component {
     constructor () {

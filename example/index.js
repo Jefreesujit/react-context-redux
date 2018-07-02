@@ -1,5 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './components'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from './store';
+import Counter from './counter';
 
-ReactDOM.render(<App />, document.getElementById('container'))
+const App = (props) => (
+  <Provider>
+    <Counter {...props} />
+  </Provider>
+)
+
+ReactDOM.render(<App text="Count" />, document.getElementById('container'))
