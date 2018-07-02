@@ -7,14 +7,14 @@ class MyComponent extends Component {
     }
 
     clickHandler = (event) => {
-        this.props.dispatch(increaseCount(this.props.value));
+        this.props.dispatch(this.increaseCount(this.props.value));
     }
 
     increaseCount (value) {
         return function (dispatch) {
             let data = {
-                key: 'state.example.value',
-                payload: value
+                key: 'example.value',
+                payload: ++value
             };
 
             dispatch(data);

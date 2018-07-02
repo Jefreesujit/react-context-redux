@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _set = require('keypather/set');
+
+var _set2 = _interopRequireDefault(_set);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -18,7 +22,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var EnhancedProvider = function EnhancedProvider(Provider, initialState) {
+var EnhancedProvider = function EnhancedProvider(initializeProvider, Provider, initialState) {
   return function (_Component) {
     _inherits(EnhancedProvider, _Component);
 
@@ -28,14 +32,16 @@ var EnhancedProvider = function EnhancedProvider(Provider, initialState) {
       var _this = _possibleConstructorReturn(this, (EnhancedProvider.__proto__ || Object.getPrototypeOf(EnhancedProvider)).call(this));
 
       _this.state = props.initialState || initialState;
+      initializeProvider(_this);
       return _this;
     }
 
     _createClass(EnhancedProvider, [{
       key: 'updateState',
       value: function updateState(data) {
+        console.log(data);
         var newState = Object.assign({}, this.state);
-        newState[data.key] = data.payload;
+        (0, _set2.default)(newState, data.key, data.payload, { force: true });
         this.setState(newState);
       }
     }, {

@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 
-const EnhancedProvider = (Provider, initialState) =>
+const EnhancedProvider = (initializeProvider, Provider, initialState) =>
   class EnhancedProvider extends Component {
     constructor(props) {
       super();
       this.state = props.initialState || initialState;
-    }
-
-    updateState (data) {
-      let newState = Object.assign({}, this.state);
-      newState[data.key] = data.payload;
-      this.setState(newState);
+      initializeProvider(this);
     }
 
     render() {
