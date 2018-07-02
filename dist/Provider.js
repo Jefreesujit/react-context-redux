@@ -10,10 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _set = require('keypather/set');
-
-var _set2 = _interopRequireDefault(_set);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37,14 +33,6 @@ var EnhancedProvider = function EnhancedProvider(initializeProvider, Provider, i
     }
 
     _createClass(EnhancedProvider, [{
-      key: 'updateState',
-      value: function updateState(data) {
-        console.log(data);
-        var newState = Object.assign({}, this.state);
-        (0, _set2.default)(newState, data.key, data.payload, { force: true });
-        this.setState(newState);
-      }
-    }, {
       key: 'render',
       value: function render() {
         return _react2.default.createElement(
