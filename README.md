@@ -1,6 +1,6 @@
 # react-context-state
 
-A simple wrapper over React's new [Context API](https://reactjs.org/docs/context.html), to provide the redux feel for developers
+A simple wrapper over React's new [Context API](https://reactjs.org/docs/context.html), to provide the redux feel for developers.
 
 ## Installation
 
@@ -10,7 +10,7 @@ npm i react-context-state --save
 
 ## Usage
 
-You can use it the same way as redux provider and connect
+You can use it the same way as redux provider and connect. Dispatch will be available as a prop by default when connect is used.
 
 **store.js**
 ```js
@@ -36,7 +36,7 @@ const App = (props) => (
 ```js
 import { connect } from './store';
 
-const increaseCount value => dispatch => {
+const increaseCount = value => dispatch => {
     dispatch({  key: 'example.value',  payload: ++value });
 }}
 
@@ -50,9 +50,7 @@ const Counter = (props) => {
    );
 }
 
-const select = (state) => {
-    return { value: state.example.value };
-}
+const select = (state) => ({ value: state.example.value });
 
 export default connect(select)(Counter);
 ```
@@ -69,5 +67,6 @@ See `/examples` folder for more examples
 4) `npm run build:example`
 5) Submit a pull request once you are done with your changes
 
-### LICENSE
+
+## LICENSE
 MIT
