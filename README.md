@@ -72,6 +72,6 @@ See `/examples` folder for more examples
 MIT
 
 [npm-image]: https://badge.fury.io/js/react-context-redux.svg
-[npm-url]: https://npmjs.org/package/@jefreesujit/react-context-redux
+[npm-url]: https://npmjs.org/package/react-context-redux
 [travis-image]: https://travis-ci.org/Jefreesujit/react-context-redux.svg?branch=master
 [travis-url]: https://travis-ci.org/Jefreesujit/react-context-redux
