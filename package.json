@@ -1,17 +1,17 @@
 {
-  "name": "react-context-state",
-  "version": "1.0.0",
-  "description": "",
+  "name": "react-context-redux",
+  "version": "0.1.0",
+  "description": "A simple wrapper over React's new Context API, to provide the redux feel for developers",
   "main": "index.js",
   "author": "Jefree Sujit <e.jefree110@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jefreesujit/react-context-state/issues"
+    "url": "https://github.com/jefreesujit/react-context-redux/issues"
   },
-  "homepage": "https://github.com/jefreesujit/react-context-state#readme",
+  "homepage": "https://github.com/jefreesujit/react-context-redux#readme",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/jefreesujit/react-context-state.git"
+    "url": "git+ssh://git@github.com/jefreesujit/react-context-redux.git"
   },
   "files": [
     "index.js",
@@ -24,7 +24,7 @@
     "redux",
     "context",
     "store",
-    "state"
+    "redux"
   ],
   "dependencies": {
     "keypather": "^3.0.0",

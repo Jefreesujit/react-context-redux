@@ -1,11 +1,11 @@
-# react-context-state
+# react-context-redux
 
 A simple wrapper over React's new [Context API](https://reactjs.org/docs/context.html), to provide the redux feel for developers.
 
 ## Installation
 
 ```
-npm i react-context-state --save
+npm i react-context-redux --save
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ You can use it the same way as redux provider and connect. Dispatch will be avai
 
 **store.js**
 ```js
-import createStore from 'react-context-state';
+import createStore from 'react-context-redux';
 let initialState = { count: 0 };
 
 export const { Provider, connect } = createStore(initialState);

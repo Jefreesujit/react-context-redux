@@ -11,7 +11,6 @@ const WrapperProvider = (initializeProvider, Provider, initialState) =>
     }
 
     _updateState (data) {
-      console.log(data);
       let newState = Object.assign({}, this.state);
       setKeypath(newState, data.key, data.payload, {force: true});
       this.setState(newState);

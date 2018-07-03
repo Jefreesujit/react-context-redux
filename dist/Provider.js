@@ -42,7 +42,6 @@ var WrapperProvider = function WrapperProvider(initializeProvider, Provider, ini
     _createClass(EnhancedProvider, [{
       key: '_updateState',
       value: function _updateState(data) {
-        console.log(data);
         var newState = Object.assign({}, this.state);
         (0, _set2.default)(newState, data.key, data.payload, { force: true });
         this.setState(newState);
