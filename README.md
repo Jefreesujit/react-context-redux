@@ -73,5 +73,5 @@ MIT
 
 [npm-image]: https://badge.fury.io/js/react-context-redux.svg
 [npm-url]: https://npmjs.org/package/@jefreesujit/react-context-redux
-[travis-image]: https://travis-ci.org/jefreesujit/react-context-redux?branch=master
-[travis-url]: https://travis-ci.org/jefreesujit/react-context-redux
+[travis-image]: https://travis-ci.org/Jefreesujit/react-context-redux?branch=master
+[travis-url]: https://travis-ci.org/Jefreesujit/react-context-redux
