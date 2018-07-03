@@ -1,4 +1,4 @@
-# react-context-redux
+# react-context-redux [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
 A simple wrapper over React's new [Context API](https://reactjs.org/docs/context.html), to provide the redux feel for developers.
 
@@ -70,3 +70,8 @@ See `/examples` folder for more examples
 
 ## LICENSE
 MIT
+
+[npm-image]: https://badge.fury.io/js/react-context-redux.svg
+[npm-url]: https://npmjs.org/package/@jefreesujit/react-context-redux
+[travis-image]: https://travis-ci.org/jefreesujit/react-context-redux?branch=master
+[travis-url]: https://travis-ci.org/jefreesujit/react-context-redux
