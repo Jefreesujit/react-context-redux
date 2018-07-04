@@ -1,3 +1,7 @@
 .DS_Store
 node_modules
 example/index.build.js
+es
+umd
+/*.js
+!rollup.config.js

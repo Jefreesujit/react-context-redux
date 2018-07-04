@@ -1,24 +1,5 @@
-import { createContext } from 'react';
-import createProvider from './Provider';
-import createConnect from './connect';
+import _createStore from "./CreateStore";
+import _connect from "./Connect";
 
-const createStore = initialState => {
-  let updateState;
-
-  const { Provider, Consumer } = createContext();
-  const dispatcher = data => updateState(data);
-
-  const initializeProvider = self => {
-    updateState = self.updateState;
-  }
-
-  const provider = createProvider(initializeProvider, Provider, initialState);
-  const connect = createConnect(Consumer, dispatcher);
-
-  return {
-    Provider: provider,
-    connect
-  };
-}
-
-export default createStore;
+export { _createStore as CreateStore };
+export { _connect as Connect };
