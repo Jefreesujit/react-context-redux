@@ -66,13 +66,11 @@
   "scripts": {
     "build": "node tools/build.js",
     "build:example": "cross-env NODE_ENV=development webpack --progress --color",
-    "test": "jest"
+    "test": "jest",
+    "clean": "git clean -fdX"
   },
   "peerDependencies": {
     "react": "^16.3.0",
     "react-dom": "^16.3.0"
-  },
-  "jest": {
-    "setupTestFrameworkScriptFile": "./test/configure.js"
   }
 }
