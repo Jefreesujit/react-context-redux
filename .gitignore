@@ -5,3 +5,4 @@ es
 umd
 /*.js
 !rollup.config.js
+!prettier.config.js
