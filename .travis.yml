@@ -12,14 +12,13 @@ jobs:
     script:
     - npm run build
     - npm run test
-# deploy:
-#   provider: npm
-#   email: jefree.sujit@gmail.com
-#   api_key:
-#     secure: nNSJX0GS+bpzPwb5/6wAync1QCUqzim5C0bPOUsY0bvxlrncDNyY/8NMV0M68cNC8yNRFhXYCeEfr9l6TAlK7wint95sjBwKwTybBQhWoH9NrCoNOcIfDiRrnDSYErxK1/pS/JTZFzGKApHXqCeldHr2y+WWwFixTTfboPwTKjxrZLm1txemmM0gL+BapnSoUNElauqYziy1QuKvLJBCSJXbuCs2yGY9877sy7TB3/s5oIQge7r0iRuKgoBK6mth3WE3V8Wy5cDEZTpZf0kiCXqmvzmobFBQja+JqrBAa78xiDnOcMo6iMAczEgofW8UCbXN41YddwnjY38iXpen2Z9/xcqhfzYEzZlzcmoUHABqzArBiOAvunwI37wggNkos2CApYaa2joGxpPOh3yrTJF7EH5IPRgHQ/Gt1Ib6zLa+Os71K4N2uMOew/1aeWvct18i7kk1t4DMWALg1Of9HDlEIsUNxKyJOOmEYUIeDGVnXvFPX2tuw8pqx4zwu7CdZXMowEFrLd7KgxnSwbvzTZPsKvnscmKFcqnN33p5ssdHPzd7j77QA4z+w8LYGR8TSBwp0THv5Z311q99nNBG5oum6sgk2/QFybgFfTuz6mehO8mVRhe740ye0Z/8VfvxRszsovST12ZzFjdkIji5AikQxc35b0WZGP4/ZNqH4gQ=
-#   on:
-#     tags: true
-#     repo: Jefreesujit/react-context-redux
-#     branch: master
-#   skip_cleanup: true
-
+deploy:
+  provider: npm
+  email: jefree.sujit@gmail.com
+  api_key:
+    secure: BrBdcCxXWJwvcHyfXPp5d8aIfj4IgZoej61w0Jh42XJuku52ODggJyEzZWX8WWf97oefopw0wW5AuxBAOOqiamk3p8ASMbNV5yK8y0E4RPS8ECouUJ4ZXNBiO243P32mizQBExa1SEarrH2o7keBSgWLF0Rd9dvHJPhuq9YhE9YziZZB/FrXNbblM5lYbShRKZ7kajADW9EWYO3DHai179B8QWBdQEU+y8Y0d6Knmg7szJorH0HYX9Wj3kN3+hAXnTk+21cDVtmLsGjl/6W1RQ9AVsJEBk/RfLgpAqGhFIUdX/1Ff0sKPp39LWvtJBiDF9src/M/Y2HSPPhgcO6ACPBb5ko5tZTXfaDvhwvOUm/qBnK4bl/9A4/SMfpBWyxfnKeRcW+iEK8qurxGVcPj86BN8dwLBrdff9v+RI+/lQvq+oEPbkXLdtsYRhRHtv7k4i2lPKjz/+ms98jVk/XJOe83yB78Eky5JBhmT+0tNpVV/IdAu/XgptCudIPfwfnzMPWc+p7FpQ+Q5ssMvY3tILdg83vBgA4qA7AMOJ7+uTSR+14L7J8FlUeTLYOfzjq3sxvC5T2+6QXG9XpjxT+1gJveze5gYu9QBc3MmKWNykyR61maxIQEm1Va71tVtCQrqID9RXq7KxBLIA7Z1LHfuR9ON86dqNs3Xnn5pJTXGgs=
+  on:
+    tags: true
+    repo: Jefreesujit/react-context-redux
+    branch: master
+  skip_cleanup: true
