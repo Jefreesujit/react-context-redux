@@ -1,23 +1,24 @@
-import babel from "rollup-plugin-babel";
-import { uglify } from "rollup-plugin-uglify";
-import commonjs from "rollup-plugin-commonjs";
-import resolve from "rollup-plugin-node-resolve";
+import babel from 'rollup-plugin-babel';
+import { uglify } from 'rollup-plugin-uglify';
+import commonjs from 'rollup-plugin-commonjs';
+import resolve from 'rollup-plugin-node-resolve';
+import builtins from 'rollup-plugin-node-builtins';
 
 const config = {
-  input: "src/index.js",
+  input: 'src/index.js',
   output: {
-    name: "ReactContextRedux",
+    name: 'ReactContextRedux',
     globals: {
-      react: "React"
+      react: 'React'
     }
   },
-  external: ["react"],
+  external: ['react'],
   plugins: [
     babel({
       babelrc: false,
-      exclude: "node_modules/**",
-      plugins: ["external-helpers"],
-      presets: [["env", { modules: false }], "react"]
+      exclude: 'node_modules/**',
+      plugins: ['external-helpers'],
+      presets: [['env', { modules: false }], 'react']
     }),
     resolve({
       browser: true,
@@ -25,11 +26,12 @@ const config = {
     }),
     commonjs({
       include: /node_modules/
-    })
+    }),
+    builtins()
   ]
 };
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
   config.plugins.push(uglify());
 }
 
