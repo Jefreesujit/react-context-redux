@@ -80,11 +80,15 @@
     "clean": "git clean -fdX",
     "prepublishOnly": "node ./tools/build.js",
     "watch": "babel ./src -d . --ignore __tests__ --watch",
-    "lint": "eslint src/",
+    "lint": "eslint src/ ",
+    "lint:fix": "eslint src/ --fix",
     "precommit": "npm run lint"
   },
   "peerDependencies": {
     "react": ">=16.3.0",
     "react-dom": ">=16.3.0"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js"
   }
 }
