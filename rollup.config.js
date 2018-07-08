@@ -2,7 +2,7 @@ import babel from 'rollup-plugin-babel';
 import { uglify } from 'rollup-plugin-uglify';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
-import builtins from 'rollup-plugin-node-builtins';
+import replace from 'rollup-plugin-replace';
 
 const config = {
   input: 'src/index.js',
@@ -20,14 +20,13 @@ const config = {
       plugins: ['external-helpers'],
       presets: [['env', { modules: false }], 'react']
     }),
-    resolve({
-      browser: true,
-      preferBuiltins: true
-    }),
+    resolve(),
     commonjs({
       include: /node_modules/
     }),
-    builtins()
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    })
   ]
 };
 
