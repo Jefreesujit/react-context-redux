@@ -40,6 +40,7 @@ const select = state => {
   };
 };
 
+// necessary as Provider can't be accessed directly
 class ProviderWrapper extends React.Component {
   render() {
     return e(Provider, this.props);
