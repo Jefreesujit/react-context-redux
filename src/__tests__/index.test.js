@@ -48,13 +48,8 @@ describe('Checking Rendering', () => {
       expect(Component.prop('value')).toEqual(defaultState);
     });
 
-    it('Counter wrapper component is rendered', () => {
-      expect(CounterWrapper.length).toEqual(1);
-    });
-
     it('Counter component is rendered', () => {
-      console.log(CounterWrapper.debug());
-      // expect((CounterWrapper).find('Counter').length).toEqual(1);
+      expect(CounterWrapper.length).toEqual(1);
     });
   });
 });
