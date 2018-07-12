@@ -4,5 +4,4 @@ index.build.js
 es
 umd
 /*.js
-!rollup.config.js
-!prettier.config.js
+!*.config.js
