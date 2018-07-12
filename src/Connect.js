@@ -5,7 +5,9 @@ const connect = (
   dispatcher
 ) => mapStateToProps => WrappedComponent => {
   const dispatchProp = actionCallback => {
-    actionCallback(dispatcher);
+    if (typeof actionCallback === 'function') {
+      actionCallback(dispatcher);
+    }
   };
 
   const ConnectedComponent = props => (

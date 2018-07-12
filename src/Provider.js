@@ -12,14 +12,18 @@ const WrapperProvider = (initializeProvider, Provider, initialState) =>
     }
 
     _updateState(data) {
-      const newState = JSON.parse(JSON.stringify(this.state));
-      setValue(newState, data.key, data.payload);
+      let newState = JSON.parse(JSON.stringify(this.state));
+      if (data.key !== '') {
+        setValue(newState, data.key, data.payload);
+      } else {
+        newState = data.payload || initialState;
+      }
       this.setState(newState);
     }
 
     render() {
       const { children } = this.props;
-      return <Provider value={this.state}>{children}</Provider>;
+      return <Provider value={this.state || {}}>{children}</Provider>;
     }
   };
 
