@@ -1,11 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 
 const connect = (
   Consumer,
   dispatcher
 ) => mapStateToProps => WrappedComponent => {
   const dispatchProp = actionCallback => {
-    actionCallback(dispatcher);
+    if (typeof actionCallback === 'function') {
+      actionCallback(dispatcher);
+    }
   };
 
   const ConnectedComponent = props => (

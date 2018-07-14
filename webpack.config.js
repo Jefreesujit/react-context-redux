@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  mode: 'production',
   entry: path.resolve(__dirname, 'example', 'withTooling'),
   output: {
     path: path.resolve(__dirname, 'example', 'withTooling'),

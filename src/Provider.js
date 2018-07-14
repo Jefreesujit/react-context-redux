@@ -1,24 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-/* eslint-disable no-param-reassign */
-// TODO: refactor?
-const findAndUpdate = (object, key, val) => {
-  const a = key.split('.');
-
-  const n = a.length - 1;
-  for (let i = 0; i < n; i += 1) {
-    const k = a[i];
-    if (k in object) {
-      object = object[k];
-    } else {
-      object[k] = {};
-      object = object[k];
-    }
-  }
-  object[a[n]] = val;
-};
-/* eslint-enable no-param-reassign */
+import { setValue } from 'json-keypath';
 
 const WrapperProvider = (initializeProvider, Provider, initialState) =>
   class EnhancedProvider extends Component {
@@ -30,14 +12,18 @@ const WrapperProvider = (initializeProvider, Provider, initialState) =>
     }
 
     _updateState(data) {
-      const newState = JSON.parse(JSON.stringify(this.state));
-      findAndUpdate(newState, data.key, data.payload);
+      let newState = JSON.parse(JSON.stringify(this.state));
+      if (data.key !== '') {
+        setValue(newState, data.key, data.payload);
+      } else {
+        newState = data.payload || initialState;
+      }
       this.setState(newState);
     }
 
     render() {
       const { children } = this.props;
-      return <Provider value={this.state}>{children}</Provider>;
+      return <Provider value={this.state || {}}>{children}</Provider>;
     }
   };
 

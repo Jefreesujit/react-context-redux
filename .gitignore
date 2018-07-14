@@ -1,9 +1,8 @@
 .DS_Store
-coverage/*
 node_modules
 index.build.js
 es
 umd
 /*.js
-!*.config.js
 !setupTests.js
+!*.config.js
