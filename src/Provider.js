@@ -22,13 +22,17 @@ const WrapperProvider = (initializeProvider, Provider, initialState) =>
     }
 
     _updateState(data) {
-      let newState = JSON.parse(JSON.stringify(this.state));
-      if (data.key !== '') {
-        setValue(newState, data.key, data.payload);
+      if (data && typeof data.key === 'string') {
+        let newState = JSON.parse(JSON.stringify(this.state));
+        if (data.key !== '') {
+          setValue(newState, data.key, data.payload);
+        } else {
+          newState = data.payload || initialState;
+        }
+        this.setState(newState);
       } else {
-        newState = data.payload || initialState;
+        throw new Error('Invalid arguments to set the state');
       }
-      this.setState(newState);
     }
 
     render() {
