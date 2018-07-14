@@ -82,7 +82,6 @@
     "prepublishOnly": "node ./tools/build.js",
     "watch": "babel ./src -d . --ignore __tests__ --watch",
     "lint": "eslint src/ ",
-    "lint:fix": "eslint src/ --fix",
     "precommit": "npm run lint"
   },
   "peerDependencies": {
