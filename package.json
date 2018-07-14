@@ -61,6 +61,7 @@
     "husky": "^0.14.3",
     "jest": "^23.3.0",
     "jsdoc": "^3.5.5",
+    "jsdoc-to-markdown": "^4.0.1",
     "node-sass": "^4.8.3",
     "node-sass-import": "^1.0.0",
     "npm-run-all": "^4.0.2",
@@ -84,6 +85,7 @@
     "watch": "babel ./src -d . --ignore __tests__ --watch",
     "lint": "eslint src/ ",
     "createdoc": "jsdoc src -r -d docs",
+    "generateDoc": "jsdoc2md src/*.js > DOCUMENTATION.md",
     "precommit": "npm run lint"
   },
   "peerDependencies": {

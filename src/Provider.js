@@ -2,7 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { setValue } from 'json-keypath';
 
+/**
+ * @module provider
+ */
+
 const WrapperProvider = (initializeProvider, Provider, initialState) =>
+  /**
+   * @class Provider
+   * @description Provider Component.
+   * @prop {object} defaultState - The default state of the application need to create the store, if not passed as part of createStore
+   * @prop {Node} children - React element to which the store should be available
+   */
   class EnhancedProvider extends Component {
     constructor(props) {
       super(props);
