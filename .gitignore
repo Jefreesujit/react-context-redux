@@ -5,6 +5,5 @@ index.build.js
 es
 umd
 /*.js
+!*.config.js
 !setupTests.js
-!rollup.config.js
-!prettier.config.js
