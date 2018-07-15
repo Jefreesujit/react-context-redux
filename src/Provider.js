@@ -11,7 +11,7 @@ const WrapperProvider = (initializeProvider, Provider, initialState) =>
    * @class Provider
    * @description Provider Component.
    * @prop {object} defaultState - The default state of the application need to create the store, if not passed as part of createStore
-   * @prop {Node} children - React element to which the store should be available
+   * @prop {Node} children - React element for which the store should be made available
    */
   class EnhancedProvider extends Component {
     constructor(props) {

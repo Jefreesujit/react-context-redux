@@ -29,7 +29,7 @@ To dispatch values to global store.
 ## createStore ⇒ <code>Node</code> \| <code>function</code>
 Creates an global store.
 
-**Returns**: <code>Node</code> - - Returns a wrapper provider component<code>function</code> - - A connect function to connect a component with global state  
+**Returns**: <code>Node</code> - - Returns a wrapper provider component<code>function</code> - - A "connect" function to connect a component with global state  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -51,7 +51,7 @@ To update values in global store.
 | --- | --- | --- |
 | options | <code>Object</code> | A object with the details to update values in global store |
 | options.key | <code>string</code> | KeyPath to which the value has to be assigned, separated by '.' |
-| options.payload | <code>Object</code> | value to be set against the provided Keypath |
+| options.payload | <code>Object</code> | Value to be set against the provided Keypath |
 
 <a name="module_createStore..connect"></a>
 
@@ -64,7 +64,7 @@ Connects the passed component with the global store.
 | Param | Type | Description |
 | --- | --- | --- |
 | select | <code>function</code> | To map global state to props, should return an JSON object |
-| component | <code>Node</code> | A React element, to which the props should be passed |
+| component | <code>Node</code> | A React element, to which the props has to be passed |
 
 <a name="module_provider"></a>
 
@@ -83,7 +83,7 @@ Connects the passed component with the global store.
 | Name | Type | Description |
 | --- | --- | --- |
 | defaultState | <code>object</code> | The default state of the application need to create the store, if not passed as part of createStore |
-| children | <code>Node</code> | React element to which the store should be available |
+| children | <code>Node</code> | React element for which the store should be made available |
 
 <a name="new_module_provider..Provider_new"></a>
 
