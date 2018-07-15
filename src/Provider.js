@@ -2,7 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { setValue } from 'json-keypath';
 
+/**
+ * @module provider
+ */
+
 const WrapperProvider = (initializeProvider, Provider, initialState) =>
+  /**
+   * @class Provider
+   * @description Provider Component.
+   * @prop {object} defaultState - The default state of the application need to create the store, if not passed as part of createStore
+   * @prop {Node} children - React element for which the store should be made available
+   */
   class EnhancedProvider extends Component {
     constructor(props) {
       super(props);
@@ -12,13 +22,17 @@ const WrapperProvider = (initializeProvider, Provider, initialState) =>
     }
 
     _updateState(data) {
-      let newState = JSON.parse(JSON.stringify(this.state));
-      if (data.key !== '') {
-        setValue(newState, data.key, data.payload);
+      if (data && typeof data.key === 'string') {
+        let newState = JSON.parse(JSON.stringify(this.state));
+        if (data.key !== '') {
+          setValue(newState, data.key, data.payload);
+        } else {
+          newState = data.payload || initialState;
+        }
+        this.setState(newState);
       } else {
-        newState = data.payload || initialState;
+        throw new Error('Invalid arguments to set the state');
       }
-      this.setState(newState);
     }
 
     render() {

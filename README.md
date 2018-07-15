@@ -11,7 +11,12 @@ npm i react-context-redux --save
 ```
 
 ```
-<script src="https://unpkg.com/react-context-redux@0.1.0/umd/react-context-redux.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-context-redux/umd/react-context-redux.min.js" crossorigin></script>
+```
+Or use it with a specific version you need
+
+```
+<script src="https://unpkg.com/react-context-redux@0.2.0/umd/react-context-redux.min.js" crossorigin></script>
 ```
 
 ## Usage
