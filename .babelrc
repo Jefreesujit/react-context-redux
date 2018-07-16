@@ -1,13 +1,10 @@
 {
-  "presets": ["es2015", "react"],
-  "plugins": [
-    "transform-decorators-legacy",
-    "transform-class-properties",
-    "transform-object-rest-spread"
-  ],
+  "presets": ["env", "react", "stage-2"],
   "env": {
+    "browser": true,
     "test": {
-      "plugins": ["istanbul"]
+      "presets": [["env"], "react"]
     }
-  }
+  },
+  "plugins": ["transform-object-rest-spread"]
 }

@@ -1,11 +1,22 @@
-# react-context-redux [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+# react-context-redux [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 
-A simple wrapper over React's new [Context API](https://reactjs.org/docs/context.html), to provide the redux feel for developers.
+A Redux style wrapper over React's new [Context API](https://reactjs.org/docs/context.html).
 
 ## Installation
 
+Just like React, react-context-redux also can be used through both `NPM` and `<script>` tag
+
 ```
 npm i react-context-redux --save
+```
+
+```
+<script src="https://unpkg.com/react-context-redux/umd/react-context-redux.min.js" crossorigin></script>
+```
+Or use it with a specific version you need
+
+```
+<script src="https://unpkg.com/react-context-redux@0.2.0/umd/react-context-redux.min.js" crossorigin></script>
 ```
 
 ## Usage
@@ -14,45 +25,80 @@ You can use it the same way as redux provider and connect. Dispatch will be avai
 
 **store.js**
 ```js
-import createStore from 'react-context-redux';
-let initialState = { count: 0 };
+import { createStore } from 'react-context-redux';
 
-export const { Provider, connect } = createStore(initialState);
+export const { Provider, connect } = createStore({ // pass your initial state
+  like: {
+    count: 0
+  }
+});
 ```
 
 **App.js:**
 ```js
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Provider } from './store';
-import Counter from './counter';
+import LikeButton from './LikeButton';
 
-const App = (props) => (
+const App = () => (
   <Provider>
-    <Counter />
+    <LikeButton />
   </Provider>
 );
+
+ReactDOM.render(<App />, document.getElementById('counter_container'));
 ```
 
-**counter.js:**
+**LikeButton.js:**
 ```js
+import React from 'react';
 import { connect } from './store';
 
-const increaseCount = value => dispatch => {
-    dispatch({  key: 'example.value',  payload: ++value });
-}};
-
-const Counter = (props) => {
-    const counter = () => props.dispatch(increaseCount());
-    return (
-      <div>
-        <span>{props.value}</span>
-        <button onClick={counter}>Count</button>
-      </div>
-   );
+const increaseCount = value => {
+  // while dispatching we expect to things two be present in the param object
+  // key - path to be updated in state ( separated by . )
+  // payload - value to be put on that path
+  // if some keys specified in the path are not available we will create them
+  return dispatch => {
+    dispatch({
+      key: 'like.count',
+      payload: value
+    });
+  };
 };
 
-const select = state => ({ value: state.example.value });
+const LikeButton = ({ count, dispatch }) => (
+  <button onClick={() => dispatch(increaseCount(count + 1))} type="button">
+    {/* We have a redux-thunk like approach where you param for dispatch  is a function */}
+    Liked {count} times
+  </button>
+);
 
-export default connect(select)(Counter);
+const select = state => {
+  return {
+    count: state.like.count
+  };
+};
+
+export default connect(select)(LikeButton);
+
+```
+
+`Note: While using react-context-redux through a script tag, make sure to wrap the provider`
+
+**index.js**
+```js
+class ProviderWrapper extends React.Component {
+  render() {
+    return e(Provider, this.props);
+  }
+}
+
+ReactDOM.render(
+  e(ProviderWrapper, {}, e(connect(select)(LikeButton))),
+  document.getElementById('counter_container')
+);
 ```
 
 ## Examples
@@ -61,11 +107,7 @@ See `/examples` folder for more examples
 
 ## Contribution
 
-1) Fork this repo, clone it locally
-2) `npm i`
-3) `npm run build`
-4) `npm run build:example`
-5) Submit a pull request once you are done with your changes
+Contributions are awesome. Go through our [Contribution Guide](CONTRIBUTING.md) to get started.
 
 
 ## LICENSE
@@ -75,3 +117,5 @@ MIT
 [npm-url]: https://npmjs.org/package/react-context-redux
 [travis-image]: https://travis-ci.org/Jefreesujit/react-context-redux.svg?branch=master
 [travis-url]: https://travis-ci.org/Jefreesujit/react-context-redux
+[daviddm-image]: https://david-dm.org/Jefreesujit/react-context-redux.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/Jefreesujit/react-context-redux

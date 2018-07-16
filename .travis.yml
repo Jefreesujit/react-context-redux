@@ -1,6 +1,24 @@
 language: node_js
 node_js:
-  - "8"
-  - "6"
-script:
-  - npm run build
+- '8'
+jobs:
+  include:
+  - stage: lint
+    script:
+    - npm run lint
+  - stage: build and test
+    before_script:
+    - npm install -g babel-cli rollup
+    script:
+    - npm run build
+    - npm run test
+deploy:
+  provider: npm
+  email: jefree.sujit@gmail.com
+  api_key:
+    secure: BrBdcCxXWJwvcHyfXPp5d8aIfj4IgZoej61w0Jh42XJuku52ODggJyEzZWX8WWf97oefopw0wW5AuxBAOOqiamk3p8ASMbNV5yK8y0E4RPS8ECouUJ4ZXNBiO243P32mizQBExa1SEarrH2o7keBSgWLF0Rd9dvHJPhuq9YhE9YziZZB/FrXNbblM5lYbShRKZ7kajADW9EWYO3DHai179B8QWBdQEU+y8Y0d6Knmg7szJorH0HYX9Wj3kN3+hAXnTk+21cDVtmLsGjl/6W1RQ9AVsJEBk/RfLgpAqGhFIUdX/1Ff0sKPp39LWvtJBiDF9src/M/Y2HSPPhgcO6ACPBb5ko5tZTXfaDvhwvOUm/qBnK4bl/9A4/SMfpBWyxfnKeRcW+iEK8qurxGVcPj86BN8dwLBrdff9v+RI+/lQvq+oEPbkXLdtsYRhRHtv7k4i2lPKjz/+ms98jVk/XJOe83yB78Eky5JBhmT+0tNpVV/IdAu/XgptCudIPfwfnzMPWc+p7FpQ+Q5ssMvY3tILdg83vBgA4qA7AMOJ7+uTSR+14L7J8FlUeTLYOfzjq3sxvC5T2+6QXG9XpjxT+1gJveze5gYu9QBc3MmKWNykyR61maxIQEm1Va71tVtCQrqID9RXq7KxBLIA7Z1LHfuR9ON86dqNs3Xnn5pJTXGgs=
+  on:
+    tags: true
+    repo: Jefreesujit/react-context-redux
+    branch: master
+  skip_cleanup: true

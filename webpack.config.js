@@ -1,12 +1,11 @@
 const path = require('path');
 
 module.exports = {
-  entry: [
-    './example/index.js'
-  ],
+  mode: 'production',
+  entry: path.resolve(__dirname, 'example', 'withTooling'),
   output: {
-    filename: 'index.build.js',
-    path: path.resolve(__dirname, 'example')
+    path: path.resolve(__dirname, 'example', 'withTooling'),
+    filename: 'index.build.js'
   },
   module: {
     rules: [
