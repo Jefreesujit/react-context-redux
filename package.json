@@ -1,10 +1,12 @@
 {
   "name": "react-context-redux",
-  "version": "0.2.0",
-  "description": "A simple wrapper over React's new Context API, to provide the redux feel for developers",
+  "version": "0.2.1",
+  "description": "A Redux style wrapper over React's Context API",
   "main": "index.js",
   "author": "Jefree Sujit <e.jefree110@gmail.com>",
   "license": "MIT",
+  "unpkg": "umd/react-context-redux.min.js",
+  "module": "es/index.js",
   "bugs": {
     "url": "https://github.com/jefreesujit/react-context-redux/issues"
   },
@@ -15,16 +17,25 @@
   },
   "files": [
     "index.js",
+    "createStore.js",
+    "Provider.js",
+    "Connect.js",
     "package.json",
     "README.md",
-    "dist/"
+    "umd/",
+    "es/"
   ],
   "keywords": [
     "react",
     "redux",
     "context",
     "store",
-    "redux"
+    "redux",
+    "state",
+    "react-context-redux",
+    "react-redux",
+    "react-context",
+    "context-api"
   ],
   "dependencies": {
     "json-keypath": "^0.1.2",
