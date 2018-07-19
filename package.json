@@ -1,6 +1,6 @@
 {
   "name": "react-context-redux",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A Redux style wrapper over React's Context API",
   "main": "index.js",
   "author": "Jefree Sujit <e.jefree110@gmail.com>",
@@ -26,8 +26,16 @@
     "es/"
   ],
   "keywords": [
-    "react", "redux", "context", "store", "redux", "state", "react-context-redux", "react-redux", "react-context","context-api"
-
+    "react",
+    "redux",
+    "context",
+    "store",
+    "redux",
+    "state",
+    "react-context-redux",
+    "react-redux",
+    "react-context",
+    "context-api"
   ],
   "dependencies": {
     "json-keypath": "^0.1.2",
