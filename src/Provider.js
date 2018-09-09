@@ -18,6 +18,7 @@ const WrapperProvider = (initializeProvider, Provider, initialState) =>
       super(props);
       this.state = props.initialState || initialState;
       this.updateState = data => this._updateState(data);
+      this.getState = () => this._getState();
       initializeProvider(this);
     }
 
@@ -33,6 +34,10 @@ const WrapperProvider = (initializeProvider, Provider, initialState) =>
       } else {
         throw new Error('Invalid arguments to set the state');
       }
+    }
+
+    _getState () {
+      return this.state;
     }
 
     render() {

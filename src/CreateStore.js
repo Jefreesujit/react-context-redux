@@ -9,8 +9,8 @@ import createConnect from './Connect';
  * @returns {Node}  - Returns a wrapper provider component
  * @returns {function}  - A "connect" function to connect a component with global state
  */
-const createStore = initialState => {
-  let _updateState;
+const createStore = (initialState, middlewareList = []) => {
+  let _updateState, _getState, initializedMiddleware;
 
   const { Provider, Consumer } = createContext();
 
@@ -21,11 +21,33 @@ const createStore = initialState => {
    * @param {string} options.key - KeyPath to which the value has to be assigned, separated by '.'
    * @param {Object} options.payload - Value to be set against the provided Keypath
    */
-  const dispatcher = data => _updateState(data);
+  const dispatcher = data => {
+    let appStore = _getState();
+    triggerMiddlewareChain(data, curState);
+    _updateState(data);
+  };
 
   const initializeProvider = self => {
     _updateState = self.updateState;
+    _getState = self._getState;
+    initializedMiddleware = middlewareList.map((middleware) => 
+      (action, curState) => 
+        new Promise((resolve, reject) => 
+          middleware(curState)(resolve)(action)));
   };
+
+  const triggerMiddlewareChain = (initialAction, curState) => {
+    let promise = Promise.resolve(initialAction);
+    initializedMiddleware.forEach((customMiddleware) => {
+      promise = promise.then((action) => customMiddleware[i](action, curState));
+    });
+  }
+
+  // function setupMiddleware (initialAction, curState,  ...extraArgs) {
+  //   return initializedMiddleware.reduce((prev, next) => {
+  //     return prev.then((action) => next(action, curState, ...extraArgs));
+  //   }, Promise.resolve(initialAction));
+  // }
 
   const provider = createProvider(initializeProvider, Provider, initialState);
 
