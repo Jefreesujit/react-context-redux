@@ -1,6 +1,6 @@
 {
   "name": "react-context-redux",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "A Redux style wrapper over React's Context API",
   "main": "index.js",
   "author": "Jefree Sujit <e.jefree110@gmail.com>",
