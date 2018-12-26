@@ -31,12 +31,14 @@ const WrapperProvider = (initializeProvider, Provider, initialState) =>
           newState = data.payload || initialState;
         }
         this.setState(newState);
+      } else if (data && data.type) {
+        console.error("Use attribute 'key' instead of attribute 'type'");
       } else {
         throw new Error('Invalid arguments to set the state');
       }
     }
 
-    _getState () {
+    _getState() {
       return this.state;
     }
 

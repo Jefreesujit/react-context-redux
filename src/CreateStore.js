@@ -10,9 +10,21 @@ import createConnect from './Connect';
  * @returns {function}  - A "connect" function to connect a component with global state
  */
 const createStore = (initialState, middlewareList = []) => {
-  let _updateState, _getState, initializedMiddleware;
+  let _updateState;
+
+  let _getState;
+
+  let initializedMiddleware = [];
 
   const { Provider, Consumer } = createContext();
+
+  const triggerMiddlewareChain = (initialAction, curState) => {
+    let promise = Promise.resolve(initialAction);
+    initializedMiddleware.forEach(customMiddleware => {
+      promise = promise.then(action => customMiddleware(action, curState));
+    });
+    promise.then(action => _updateState(action));
+  };
 
   /**
    * @function dispatch
@@ -22,32 +34,21 @@ const createStore = (initialState, middlewareList = []) => {
    * @param {Object} options.payload - Value to be set against the provided Keypath
    */
   const dispatcher = data => {
-    let appStore = _getState();
+    const curState = _getState();
     triggerMiddlewareChain(data, curState);
-    _updateState(data);
   };
 
   const initializeProvider = self => {
     _updateState = self.updateState;
-    _getState = self._getState;
-    initializedMiddleware = middlewareList.map((middleware) => 
-      (action, curState) => 
-        new Promise((resolve, reject) => 
-          middleware(curState)(resolve)(action)));
+    _getState = self.getState;
+    initializedMiddleware = middlewareList.map(middleware => action =>
+      new Promise(resolve =>
+        middleware({ getState: _getState, dispatch: _updateState })(resolve)(
+          action
+        )
+      )
+    );
   };
-
-  const triggerMiddlewareChain = (initialAction, curState) => {
-    let promise = Promise.resolve(initialAction);
-    initializedMiddleware.forEach((customMiddleware) => {
-      promise = promise.then((action) => customMiddleware[i](action, curState));
-    });
-  }
-
-  // function setupMiddleware (initialAction, curState,  ...extraArgs) {
-  //   return initializedMiddleware.reduce((prev, next) => {
-  //     return prev.then((action) => next(action, curState, ...extraArgs));
-  //   }, Promise.resolve(initialAction));
-  // }
 
   const provider = createProvider(initializeProvider, Provider, initialState);
 
