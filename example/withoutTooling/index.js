@@ -3,13 +3,18 @@
 
 const e = React.createElement;
 const CreateStore = ReactContextRedux.createStore;
+const applyMiddleware = ReactContextRedux.applyMiddleware;
 const defaultState = {
   like: {
     count: 0
   }
 };
 
-const { Provider, connect } = CreateStore(defaultState);
+const customMiddleWare = store => next => action => {
+  console.log("Middleware triggered:", action);
+  action.payload = action.payload * 2;
+  next(action);
+}
 
 const increaseCount = value => {
   return dispatch => {
@@ -19,6 +24,8 @@ const increaseCount = value => {
     });
   };
 };
+
+const { Provider, connect } = CreateStore(defaultState, applyMiddleware(customMiddleWare));
 
 class LikeButton extends React.Component {
   render() {
