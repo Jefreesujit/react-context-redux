@@ -1,4 +1,7 @@
-import _createStore from './CreateStore';
+import createStore from './CreateStore';
 
-export { _createStore as createStore };
-export default _createStore;
+const applyMiddleware = (...args) => args;
+
+export { createStore, applyMiddleware };
+
+export default createStore;
