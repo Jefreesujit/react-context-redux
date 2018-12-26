@@ -18,6 +18,7 @@ const WrapperProvider = (initializeProvider, Provider, initialState) =>
       super(props);
       this.state = props.initialState || initialState;
       this.updateState = data => this._updateState(data);
+      this.getState = () => this._getState();
       initializeProvider(this);
     }
 
@@ -30,9 +31,15 @@ const WrapperProvider = (initializeProvider, Provider, initialState) =>
           newState = data.payload || initialState;
         }
         this.setState(newState);
+      } else if (data && data.type) {
+        console.error("Use attribute 'key' instead of attribute 'type'");
       } else {
         throw new Error('Invalid arguments to set the state');
       }
+    }
+
+    _getState() {
+      return this.state;
     }
 
     render() {

@@ -17,7 +17,7 @@ npm i react-context-redux --save
 Or use it with a specific version you need
 
 ```
-<script src="https://unpkg.com/react-context-redux@0.2.1/umd/react-context-redux.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-context-redux@0.3.0/umd/react-context-redux.min.js" crossorigin></script>
 ```
 
 ## Usage
@@ -33,6 +33,15 @@ export const { Provider, connect } = createStore({ // pass your initial state
     count: 0
   }
 });
+```
+
+It has middleware support too, works the same way as how redux middleware works. Just import `applyMiddleware`, include your favorite middlewares as parameters and pass it to `createStore`, and it will work like a charm.
+
+```js
+import { createStore, applyMiddleware } from 'react-context-redux';
+import logger from 'redux-logger';
+
+const { Provider, connect } = createStore({someState: 'value'}, applyMiddleware(logger));
 ```
 
 **App.js:**
